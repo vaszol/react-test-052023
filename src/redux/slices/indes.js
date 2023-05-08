@@ -10,7 +10,7 @@ const catsSlice = createSlice({
     name: 'catsSlice',
     initialState: {
         value: 0,
-        catsData: null
+        catsData: {fact: ''}
     },
     reducers: {
         increment: (state) => {
