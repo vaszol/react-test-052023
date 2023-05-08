@@ -1,24 +1,17 @@
 import {useDispatch, useSelector} from "react-redux";
 import {increment, fetchCats} from "./redux/slices/indes";
+import {useEffect} from "react";
 
 function App() {
-    const catReducerValue = useSelector((state) => state.catReducer.value);
-    console.log(catReducerValue);
+    const catsData = useSelector((state) => state.catReducer.catsData);
     const dispatch = useDispatch()
-    const handleClick = () => {
-        dispatch(increment());
-    }
-    const handleClick2 = () => {
-        dispatch(fetchCats());
-    }
+    useEffect(() => {
+        dispatch(fetchCats())
+    }, [])
     return (
         <div className="App">
-            <button onClick={handleClick}>
-                Test {catReducerValue}
-            </button>
-            <button onClick={handleClick2}>
-                Test2
-            </button>
+            <h2>Data about cats with using Redux</h2>
+            <span><b>{catsData?.fact}</b></span>
         </div>
     );
 }

@@ -3,8 +3,7 @@ import {fetchData} from "../../api";
 
 export const fetchCats = createAsyncThunk('https://catfact.ninja/fact', async (name) => {
     const response = await fetchData('https://catfact.ninja/fact');
-    console.log(response);
-    return response;
+    return response.data;
 });
 
 const catsSlice = createSlice({
